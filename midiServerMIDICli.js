@@ -19,6 +19,7 @@ for (let i = 0; i < numInputs; i++) {
 // CLI interface
 async function interface(){
   let useConfig=false
+  console.log(config.cfg.length)
   if (config.cfg.length>0){
     useConfig=await inquirer.prompt([
       {
@@ -29,9 +30,9 @@ async function interface(){
       }
     ])
     .then(async (answers) => {
-      return answers
+      return answers.config
     });
-
+  }
   if (useConfig.config==true){
     let opt=[]
       config.cfg.forEach(el => {
@@ -54,7 +55,7 @@ async function interface(){
         console.log(opt)
         await inquirer.prompt([{
           type: 'checkbox',
-          message: 'Select toppings',
+          message: 'Select configuration to delete',
           name: 'selectCfg',
           choices:opt
         }]).then(async (answers) => {
@@ -567,11 +568,15 @@ async function interface(){
       message: "Insert short description:",
       default: new Date().toString().substring(4,21)
     }]).then(async (answers)=>{
-        tempConfig.idCfg=config.cfg[config.cfg.length-1].idCfg+1
+        if(config.cfg.length==0){
+          tempConfig.idCfg=0
+        }else{
+          tempConfig.idCfg=config.cfg[config.cfg.length-1].idCfg+1
+        }
         tempConfig.date=new Date();
         tempConfig.description=answers.description
         config.cfg.push(tempConfig)
-        console.log(config)
+        //console.log(config)
         const path = './cfg/srvMIDIUdpConf.json';
         try {
           writeFileSync(path, JSON.stringify(config, null, 2), 'utf8');
@@ -582,14 +587,14 @@ async function interface(){
       })
   }
 }
-    console.log(tempConfig)
+   // console.log(tempConfig)
     // Open the  Midi port.
     for (let i = 0; i < numInputs; i++) {
       if (input.getPortName(i).trim()==tempConfig.device.trim()){
         tempConfig.midiPort=i
       }
       else{
-        console.log('diversa')
+     //   console.log('diversa')
       }
     }
 
@@ -601,7 +606,7 @@ async function interface(){
       process.exit(0)
     }
 }
-}
+
 
 
 input.on('message',async (deltaTime, message) => {
@@ -705,7 +710,7 @@ input.on('message',async (deltaTime, message) => {
 async function main(){
   if (numInputs>0){
     let askConfig=await interface()
-    console.log(askConfig)
+    //console.log(askConfig)
   } else {
     console.log('No MIDI devices connected')
     process.exit()

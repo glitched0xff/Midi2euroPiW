@@ -3,34 +3,5 @@
   "topic": "File di configurazione sever Midi to UDP per il controllo di EuroPi via Wifi",
   "ver": 0,
   "messagePrefix": "/europi/",
-  "cfg": [
-    {
-      "midiPort": 0,
-      "device": "UMX 250",
-      "mode": "noteOnOff",
-      "noteOnMidiMessage": 144,
-      "noteOffMidiMessage": 128,
-      "com1Midi": 1,
-      "com1ControllerRangeMax": 127,
-      "com1ControllerRangeMin": 0,
-      "com1CvRangeMax": 8,
-      "com1CvRangeMin": 0,
-      "com1MidiMsPs": 1,
-      "com2Midi": 91,
-      "com2ControllerRangeMax": 127,
-      "com2ControllerRangeMin": 0,
-      "com2CvRangeMax": 8,
-      "com2CvRangeMin": 0,
-      "com2MidiMsPs": 1,
-      "com3Midi": 224,
-      "com3ControllerRangeMax": 127,
-      "com3ControllerRangeMin": 0,
-      "com3CvRangeMax": 8,
-      "com3CvRangeMin": 0,
-      "com3MidiMsPs":0,
-      "idCfg": 2,
-      "date": "2024-02-14T16:38:23.453Z",
-      "description": "UMX Keyboard"
-    }
-  ]
+  "cfg": []
 }
