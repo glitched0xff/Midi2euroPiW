@@ -1,0 +1,15 @@
+{
+  "name": "osc2mqtt_node",
+  "version": "1.0.0",
+  "description": "Send MIDI to EuroPi by WiFi",
+  "main": "midiServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "glitched0xff",
+  "license": "AGPL-3.0-only",
+  "dependencies": {
+    "inquirer": "^8.2.6",
+    "midi": "^2.0.0"
+  }
+}
