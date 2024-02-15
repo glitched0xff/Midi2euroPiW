@@ -53,4 +53,66 @@ you can configure by hand in `./cfg/srvMIDIUdpConf.json` and select the configur
 3. patch your EuroPi
 4. PLAY!!!
 
+# Configuration mode
+There is two kind of configuratione mode noteOnOff and FreeCvs
+
+## noteOnOff
+Is use with keyboard and can accept the noteOn and noteOff message and until 4 other controller ex. pitch Wheel, mod Weel, and other pot
+
+Default cv mapping:
+| control |cvout|
+|---------|-----|
+| cvPitch | cv1 |
+| cvTrig  | cv2 |
+| com1    | cv3 |
+| com2    | cv4 |
+| com3    | cv5 |
+| com4    | cv6 |
+
+## FreeCvs
+This mode is use for mapping pot, fader, sensor that not use noteOn noteOff and assign every staff to different cv ot from cv1 to cv6
+
+Default cv mapping:
+| control |cvout|
+|---------|-----|
+| com1    | cv1 |
+| com2    | cv2 |
+| com3    | cv3 |
+| com4    | cv4 |
+| com5    | cv5 |
+| com6    | cv6 |
+
+
+# Config file
+
+The configuration `./cfg/srvMIDIUdpConf.json`
+Prefix comX refer to different controller
+
+```
+      "midiPort": 0,
+      "device": "UMX 250",
+      "mode": "noteOnOff",
+      "noteOnMidiMessage": 144,
+      "noteOffMidiMessage": 128,
+      "comxMidi": 1,
+      "comxControllerRangeMax": 127,
+      "comxControllerRangeMin": 0,
+      "comxCvRangeMax": 8,
+      "comxCvRangeMin": 0,
+      "comxMidiMsPs": 1,
+```
+
+| Value  | Type | Description|
+| ---------------------- | ------ | ---------------------------------------------------- |
+| midiPort               | int    | self assigned by script during configuratione |
+| device                 | string | device name retrive by script configuration |
+| mode                   | string | noteOnOff or FreeCvs is the kind of configuration|
+| noteOnMidiMessage      | int    | MIDI message noteOn trig cvTrig (cv2) and send pitch value to cvPitch (cv1)|
+| noteOffMidiMessage     | int    | MIDI message noteOff trig cvTrig (cv2)|
+| comxMidi               | int    | MIDI message othe control pot/fader/sensor |
+| comxControllerRangeMax | int    | max value of physical MIDI controller ex. 127 |
+| comxControllerRangeMin | int    | max value of physical MIDI controller ex. 0 |
+| comxCvRangeMax         | int    | max value of cvout in volt, range max 10v |
+| comxCvRangeMin         | int    | min value of cvout in volt, range min 0v |
+| comxMidiMsPs           | int    | The position of midi message in MIDI array, MIDI array is [x,y,z] and the messagecould be in pos 0 or 1 |
 
