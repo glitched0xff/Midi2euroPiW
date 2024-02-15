@@ -116,3 +116,11 @@ Prefix comX refer to different controller
 | comxCvRangeMin         | int    | min value of cvout in volt, range min 0v |
 | comxMidiMsPs           | int    | The position of midi message in MIDI array, MIDI array is [x,y,z] and the messagecould be in pos 0 or 1 |
 
+
+# EsterEgg
+Send data from Touchdesigner to Europi W on Wifi
+You can download and use touchDesignerUDPSender.toe for send everything from TD.
+Be carefull that cvOut range is 0-10 and can't have negative value
+Follow the installation step for update EuroPi with UDP script and launch `./touchDesignerUDPSender/touchDesignerUDPSender.toe`
+
+![Screenshot 2024-02-15 alle 21 35 57](https://github.com/glitched0xff/Midi2euroPiW/assets/28891042/75b65eee-9e55-4768-b70f-d1c149fb6904)
