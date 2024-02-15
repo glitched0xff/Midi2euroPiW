@@ -705,8 +705,7 @@ input.on('message',async (deltaTime, message) => {
 
 async function main(){
   if (numInputs>0){
-    let askConfig=await interface()
-    console.log(askConfig)
+    await interface()
   } else {
     console.log('No MIDI devices connected')
     process.exit()
