@@ -51,7 +51,7 @@ async function interface(){
         opt=opt.slice(0,-1)
         opt.push(new inquirer.Separator())
         opt.push(`A:Abort operation`) 
-        console.log(opt)
+       // console.log(opt)
         await inquirer.prompt([{
           type: 'checkbox',
           message: 'Select toppings',
@@ -60,13 +60,13 @@ async function interface(){
         }]).then(async (answers) => {
           let ab=false
           answers.selectCfg.forEach(el => {
-              console.log(el.split(':')[0])
+              //console.log(el.split(':')[0])
                   if(el.split(':')[0]=="A"){
                     ab= true
                   }
                 });
           if (ab==true){
-            console.log("abortion")
+            //console.log("abortion")
             process.exit(0)
           } else{
             let cfgTemp=[]
@@ -82,7 +82,7 @@ async function interface(){
               // }
             }
             config.cfg=arr
-            console.log(config)
+            //console.log(config)
             const path = './cfg/srvMIDIUdpConf.json';
             try {
               writeFileSync(path, JSON.stringify(config, null, 2), 'utf8');
@@ -571,7 +571,7 @@ async function interface(){
         tempConfig.date=new Date();
         tempConfig.description=answers.description
         config.cfg.push(tempConfig)
-        console.log(config)
+       // console.log(config)
         const path = './cfg/srvMIDIUdpConf.json';
         try {
           writeFileSync(path, JSON.stringify(config, null, 2), 'utf8');
@@ -582,14 +582,15 @@ async function interface(){
       })
   }
 }
-    console.log(tempConfig)
+   // console.log(tempConfig)
     // Open the  Midi port.
     for (let i = 0; i < numInputs; i++) {
       if (input.getPortName(i).trim()==tempConfig.device.trim()){
         tempConfig.midiPort=i
       }
       else{
-        console.log('diversa')
+        console.log('Be carefull the config that you selected not correspond to the MIDI controlled connected')
+        process.exit(0)
       }
     }
 
